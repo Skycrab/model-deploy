@@ -1,0 +1,82 @@
+sparkConf:
+  #spark任务名称， 必填
+  appName: pmml-deploy-{year}
+
+  #可选，本地测试可填为local
+  master: local
+
+  #是否启用hive支持
+  enableHiveSupport: false
+
+  #spark其它配置选项，如内存，shffle partitions数量等
+  conf:
+    spark.executor.memory: 4g
+
+appConf:
+  #debug开启时，每个节点会做持久化
+  debug: true
+  #持久化数量，0代表全量
+  limit: 10
+  savePath: /user/fbi/model_deploy/
+
+#一个子节点只有一个父节点，所以树更合适
+tree:
+  #节点描述
+  desc: 决策树测试
+  #名称，用于标识一个组件
+  name: model_pmml
+  #传递给组件的参数，包括模型超参数，以及配置参数等
+  parameters:
+    #pmml文件路径，暂只支持本地文件，spark-submit可通过--files glm1.pmml上传
+    pmmlPath: pmml-deploy/src/main/resources/DecisionTreeIris.pmml
+    #是否排除原始列，默认false(保留)
+    excludeOriginColumn: true
+    #排除例外，如uid等
+    excludeExcept: ["id"]
+
+  #子节点合并所有结果，如果children只有一个，可省略joinType，joinKey
+  #join类型，full(默认)， inner， left， right
+  joinType: full
+  #join关联件，默认uid
+  joinKey: name
+  children:
+    - desc: 加载iris数据源
+      name: data_source
+      parameters:
+        #支持sql， sqlFile， json
+        type: json
+        path: pmml-deploy/src/main/resources/Iris.json
+
+  #transformer节点，pipeline模式
+  transformer:
+    - desc: 新增列
+      name: feature_sql
+      parameters:
+        sql: select *, Node_Id+1 as newNodeId
+
+#    - desc: 落库
+#      name: data_sink
+#      parameters:
+#        #是否自动建表
+#        auto: true
+#        path: /user/fbi/
+#        db: test
+#        table: yhb_test_iris
+#        tableName: iris测试
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_3" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.3">
+	<Header>
+		<Application name="JPMML-SkLearn" version="1.5.13"/>
+		<Timestamp>2019-05-08T02:58:34Z</Timestamp>
+	</Header>
+	<MiningBuildTask>
+		<Extension>PMMLPipeline(steps=[('reg', LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False))])</Extension>
+	</MiningBuildTask>
+	<DataDictionary>
+		<DataField name="y" optype="continuous" dataType="double"/>
+		<DataField name="x1" optype="continuous" dataType="double"/>
+		<DataField name="x2" optype="continuous" dataType="double"/>
+		<DataField name="x3" optype="continuous" dataType="double"/>
+		<DataField name="x4" optype="continuous" dataType="double"/>
+	</DataDictionary>
+	<RegressionModel functionName="regression">
+		<MiningSchema>
+			<MiningField name="y" usageType="target"/>
+			<MiningField name="x1"/>
+			<MiningField name="x2"/>
+			<MiningField name="x3"/>
+			<MiningField name="x4"/>
+		</MiningSchema>
+		<RegressionTable intercept="0.19208399482813943">
+			<NumericPredictor name="x1" coefficient="-0.10974146329308672"/>
+			<NumericPredictor name="x2" coefficient="-0.04424044671765152"/>
+			<NumericPredictor name="x3" coefficient="0.22700138217190355"/>
+			<NumericPredictor name="x4" coefficient="0.6098941197163873"/>
+		</RegressionTable>
+	</RegressionModel>
+</PMML>

@@ -12,8 +12,8 @@
 - 执行模型逻辑
 - 结果持久化
 
-总体逻辑可类比树结构处理，如下图
-![模型](model_tree.png)
+总体逻辑可类比树结构处理，如图![模型](model_tree.png)
+
 上图，蓝色为模型节点，绿色为transformer节点，黄色为children节点(下面3个子模型都是乘客曼指数3的子节点)
 
 一个节点由children预处理节点，自身处理，transformer后继处理组成，多个节点构成了一个树结构(可类比为DAG，不过一个节点只有一个父节点)
@@ -125,12 +125,13 @@ SELECT * FROM parquetTable limit 2;
 - 开启debug模式后，如何查看中间结果？
 
 每一个组件都有唯一的uid编号，开启debug模式后，会根据配置保存几条中间数据，保存路径可在执行日志中查找
-
+```
 2019-03-13 18:42:21 INFO org.pmml.deploy.Schedule process 数据类型转换
 2019-03-13 18:42:21 INFO org.pmml.deploy.handler.Handler 组件:feature_data_type,参数:Map(originalType -> [decimal], targetType -> double)
 2019-03-13 18:42:21 INFO org.pmml.deploy.Schedule process 数据类型转换 start, uid:56cb5e58d83749ec9b64859cc3492cfd
 ...
 2019-03-13 18:20:38 INFO org.pmml.deploy.handler.feature.ChangeDataType save path:/user/model/model_deploy/20190310/c57ec5c918064b11b663e0476de15c91.parquet
+```
 
 - 是否有计划添加其它模型格式支持？
 
