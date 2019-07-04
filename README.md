@@ -108,7 +108,7 @@ application.yaml，和其它资源文件可通过{variable}引用命令行的变
 
 - 模型如何监控？
 
-后续会添加评价指标算子，如psi,auc等，包括预警功能，待产品设计，添加后，更新该文档。
+后续会添加评价指标算子，如psi,auc等。
 
 - 保存的parquet文件，如何查询？
 
@@ -117,7 +117,7 @@ parquet自带了schema信息，可在spark-sql模式下如下查询
 CREATE TEMPORARY VIEW parquetTable
 USING org.apache.spark.sql.parquet
 OPTIONS (
-  path "/user/fbi/model_source/2018/10/07/model_driver_c_card_source.parquet"
+  path "/user/fbi/model_source/2018/10/07/model_card_source.parquet"
 )
 desc parquetTable;
 SELECT * FROM parquetTable limit 2;

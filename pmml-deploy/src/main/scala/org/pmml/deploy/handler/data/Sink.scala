@@ -49,7 +49,7 @@ class Sink(val parameters: Map[String, Any]) extends Handler with ParameterHelpe
     builder.append(addLine("OUTPUTFORMAT"))
     builder.append(addLine(indentation(quote("org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"))))
     builder.append(addLine("LOCATION"))
-    builder.append(addLine(indentation(quote("hdfs://DClusterNmg4/user/fbi/" + db + "/" + table))))
+    builder.append(addLine(indentation(quote("hdfs://localhost/user/model/" + db + "/" + table))))
     builder.append(addLine("TBLPROPERTIES ("))
     //永久
     if(ttl == 0) {
