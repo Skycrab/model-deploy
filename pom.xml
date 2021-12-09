@@ -24,7 +24,7 @@
         <scalatest.version>3.0.5</scalatest.version>
         <spark.version>2.2.0</spark.version>
         <common.lang.version>3.3.2</common.lang.version>
-        <jackson.version>2.6.5</jackson.version>
+        <jackson.version>2.9.10.8</jackson.version>
         <json4s.version>3.2.11</json4s.version>
         <scalaj.http.version>2.3.0</scalaj.http.version>
         <jpmml.spark.version>1.2.0</jpmml.spark.version>
