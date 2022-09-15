@@ -29,7 +29,7 @@
         <scalaj.http.version>2.3.0</scalaj.http.version>
         <jpmml.spark.version>1.2.0</jpmml.spark.version>
         <jpmml.xgboost.version>1.3.0</jpmml.xgboost.version>
-        <yaml.version>1.23</yaml.version>
+        <yaml.version>1.31</yaml.version>
         <scalasti.version>3.0.1</scalasti.version>
         <reflections.version>0.9.11</reflections.version>
     </properties>
